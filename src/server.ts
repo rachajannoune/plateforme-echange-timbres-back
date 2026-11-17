@@ -26,6 +26,13 @@ import { routeListeNotifications } from "./routes/notifications/index.get.js";
 import { routeLectureNotification } from "./routes/notifications/[id]/lecture.patch.js";
 import { routeTableauDeBordModeration } from "./routes/moderation/tableau-de-bord/index.get.js";
 import { routeListeReceptions } from "./routes/moderation/receptions/index.get.js";
+import { routeReceptionEchange } from "./routes/moderation/echanges/[id]/reception.post.js";
+import { routeExpertiseEchange } from "./routes/moderation/echanges/[id]/expertise.post.js";
+import { routeRenvoiEchange } from "./routes/moderation/echanges/[id]/renvoi.put.js";
+import { routeAnnulerEchangeModeration } from "./routes/moderation/echanges/[id]/annuler.post.js";
+import { routeRetourAnnulation } from "./routes/moderation/echanges/[id]/retour-annulation.post.js";
+import { routeDetailUtilisateur } from "./routes/utilisateurs/[id].get.js";
+
 const fastify = Fastify({
   logger: true,
 });
@@ -62,6 +69,12 @@ await fastify.register(routeListeNotifications);
 await fastify.register(routeLectureNotification);
 await fastify.register(routeTableauDeBordModeration);
 await fastify.register(routeListeReceptions);
+await fastify.register(routeReceptionEchange);
+await fastify.register(routeExpertiseEchange);
+await fastify.register(routeRenvoiEchange);
+await fastify.register(routeAnnulerEchangeModeration);
+await fastify.register(routeRetourAnnulation);
+await fastify.register(routeDetailUtilisateur);
 
 fastify.get("/", async () => {
   return {
