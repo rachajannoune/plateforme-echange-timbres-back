@@ -16,6 +16,16 @@ import { routeCreerEchange } from "./routes/echanges/index.post.js";
 import { routeListeEchanges } from "./routes/echanges/index.get.js";
 import { routeDetailEchange } from "./routes/echanges/id.get.js";
 import { routeAccepterEchange } from "./routes/echanges/[id]/accepter.post.js";
+import { routeDeclarerEnvoi } from "./routes/echanges/[id]/envoi.put.js";
+import { routeAnnulerEchange } from "./routes/echanges/[id]/annuler.post.js";
+import { routeRefuserEchange } from "./routes/echanges/[id]/refuser.post.js";
+import { routeListeMessages } from "./routes/echanges/[id]/messages/index.get.js";
+import { routeCreerMessage } from "./routes/echanges/[id]/messages/index.post.js";
+import { routeLectureMessage } from "./routes/messages/[id]/lecture.patch.js";
+import { routeListeNotifications } from "./routes/notifications/index.get.js";
+import { routeLectureNotification } from "./routes/notifications/[id]/lecture.patch.js";
+import { routeTableauDeBordModeration } from "./routes/moderation/tableau-de-bord/index.get.js";
+import { routeListeReceptions } from "./routes/moderation/receptions/index.get.js";
 const fastify = Fastify({
   logger: true,
 });
@@ -42,6 +52,16 @@ await fastify.register(routeCreerEchange);
 await fastify.register(routeListeEchanges);
 await fastify.register(routeDetailEchange);
 await fastify.register(routeAccepterEchange);
+await fastify.register(routeDeclarerEnvoi);
+await fastify.register(routeAnnulerEchange);
+await fastify.register(routeRefuserEchange);
+await fastify.register(routeListeMessages);
+await fastify.register(routeCreerMessage);
+await fastify.register(routeLectureMessage);
+await fastify.register(routeListeNotifications);
+await fastify.register(routeLectureNotification);
+await fastify.register(routeTableauDeBordModeration);
+await fastify.register(routeListeReceptions);
 
 fastify.get("/", async () => {
   return {
