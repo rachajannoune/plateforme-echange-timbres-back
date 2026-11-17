@@ -1,4 +1,5 @@
 import Fastify from "fastify";
+import cors from "@fastify/cors";
 import cookie from "@fastify/cookie";
 import { prisma } from "./utils/db.js";
 import { routeInscription } from "./routes/auth/inscription.js";
@@ -37,14 +38,19 @@ const fastify = Fastify({
   logger: true,
 });
 
+await fastify.register(cors, {
+  origin: "http://localhost:3001",
+  credentials: true,
+});
+
 await fastify.register(cookie);
+
 await fastify.register(multipart, {
   limits: {
     fileSize: 5 * 1024 * 1024,
     files: 2,
   },
 });
-
 await fastify.register(routeInscription);
 await fastify.register(routeConnexion);
 await fastify.register(routeMoi);
