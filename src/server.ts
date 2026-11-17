@@ -12,7 +12,10 @@ import { routeCreerTimbre } from "./routes/timbres/index.post.js";
 import { routeModifierTimbre } from "./routes/timbres/id.patch.js";
 import { routeSupprimerTimbre } from "./routes/timbres/id.delete.js";
 import { routeMesTimbres } from "./routes/moi/timbres.get.js";
-
+import { routeCreerEchange } from "./routes/echanges/index.post.js";
+import { routeListeEchanges } from "./routes/echanges/index.get.js";
+import { routeDetailEchange } from "./routes/echanges/id.get.js";
+import { routeAccepterEchange } from "./routes/echanges/[id]/accepter.post.js";
 const fastify = Fastify({
   logger: true,
 });
@@ -35,7 +38,10 @@ await fastify.register(routeCreerTimbre);
 await fastify.register(routeModifierTimbre);
 await fastify.register(routeSupprimerTimbre);
 await fastify.register(routeMesTimbres);
-
+await fastify.register(routeCreerEchange);
+await fastify.register(routeListeEchanges);
+await fastify.register(routeDetailEchange);
+await fastify.register(routeAccepterEchange);
 
 fastify.get("/", async () => {
   return {

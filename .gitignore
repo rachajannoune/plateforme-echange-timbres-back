@@ -4,3 +4,5 @@ dist/
 cookies.txt
 public/uploads/
 *.log
+hugo.txt
+*.txt
